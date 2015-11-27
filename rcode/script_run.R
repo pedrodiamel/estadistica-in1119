@@ -9,6 +9,7 @@ library(nortest)
 library(ggplot2)
 library(MASS) # For the data set
 library(Sleuth2)
+library(PMCMR)
 
 #local
 source("rcode\\axlib.R")
@@ -92,12 +93,13 @@ ggplot(NULL, aes(x=1, y=PS)) +
 test_adh = st.test.adherencia(PS)
 
 
+X = c(db[,1],db[,2],db[,3],db[,4]);
+dim(X) = c(30,4);
 
-
-
-
-
-
+#Test de Friedman con post test de nemenyi
+test_friedman = st.test.friedman(X,0.05)
+test_friedman$tfriedman
+test_friedman$ptnemenyi
 
 
 

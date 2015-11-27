@@ -79,7 +79,8 @@ st.test.adherencia <- function ( X ){
   
   
   # Kormogorov Smirnov test
-  kst = ks.test(X, "pnorm", mean(X), sd(X));
+  #kst = ks.test(X, "pnorm", mean(X), sd(X));
+  kst = 0;
   
   
   res = list(shapiro = swt, lillie = llt, anderson = adt, kormogorov = kst );
@@ -90,6 +91,29 @@ st.test.adherencia <- function ( X ){
 
 
 
-
+#' Test no parametrico de friedman con post test de nemenyi
+#'
+#' @param X datos
+#' @param p nivel de significancia 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+st.test.friedman <- function(X, p){
+  
+  
+  
+  tf = friedman.test(X); #Test de friedman
+   
+  
+  ptn = posthoc.friedman.nemenyi.test(X);
+  
+  
+  res = list(tfriedman = tf, ptnemenyi = ptn)
+  return (res);
+  
+  
+}
 
 
