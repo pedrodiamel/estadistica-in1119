@@ -19,17 +19,22 @@ source("rcode\\stlib.R")
 # Load data ---------------------------------------------------------------
 
 db = loaddata.csv("data\\SG_S3.csv")
-
-
-# Analisis descriptivo ----------------------------------------------------
-
 names(db)
 head(db)
 
 
-## Para tudos os dados
+
+# Analisis descriptivo ----------------------------------------------------
 
 summary(db) #sumario
+ms_ps = st.descrip_measure(db$PS);
+ms_o = st.descrip_measure(db$O);
+ms_p = st.descrip_measure(db$P);
+ms_pq = st.descrip_measure(db$PQ);
+ms_fx7 = st.descrip_measure(db$X700MHz);
+ms_fx11 = st.descrip_measure(db$X1100MHz);
+ms_fx14 = st.descrip_measure(db$X1400MHz);
+
 
 
 d = dim(db);
@@ -66,6 +71,7 @@ m + geom_histogram(alpha=0.4, binwidth = 1) +
   expand_limits(y=0) +
   facet_grid(categorias ~ .) +
   labs(fill="Algoritmos")
+
 
 
 ## PowerSave

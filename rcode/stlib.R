@@ -31,6 +31,36 @@ st.descrip_measure <- function( X ){
   
 }
 
+st.descrip_measure.toSting <- function(X){
+  
+  media = mean(X);  
+  desviacion = sd(X);  
+  varianza = var(X); 
+  minimo = min(X);  
+  maximo = max(X); 
+  mediana = median(X); 
+  rango = range(X); 
+  quartiles = quantile(X); 
+  n = length(X);
+  kt = kurtosis(X);
+  skw = skewness(X);
+  
+  cat("media:", media ,"\n")
+  cat("desviacion:", desviacion,"\n")
+  cat("varianza:", varianza,"\n")
+  cat("minimo:", minimo,"\n")
+  cat("maximo:", maximo,"\n")
+  cat("mediana:", mediana,"\n")
+  cat("rango:", rango[1],rango[2],"\n")
+  cat("quartiles:", quartiles[1], quartiles[2], quartiles[3], quartiles[4], quartiles[5],"\n")
+  cat("cout:", n,"\n")
+  cat("kurtosis:", kt,"\n")
+  cat("skewness:", skw,"\n")
+  
+  
+}
+
+
 
 #' Analisis 
 #'
@@ -92,7 +122,9 @@ st.test.adherencia <- function ( X ){
 
 
 #' Test no parametrico de friedman con post test de nemenyi
-#'
+#' H_0: mu_1 = mu_2 = ... m_n
+#' H_1: Emu_i != mu_j, i!=j 
+#' 
 #' @param X datos
 #' @param p nivel de significancia 
 #'
@@ -107,9 +139,15 @@ st.test.friedman <- function(X, p){
   tf = friedman.test(X); 
   ptn = 0; 
   
-  #Post test de nemenyi
-  ptn = posthoc.friedman.nemenyi.test(X);
   
+  #Si existen diferencias significativas
+  #aplicar post test
+  if ( tf$p.value < p ){ 
+    
+    #Post test de nemenyi
+    ptn = posthoc.friedman.nemenyi.test(X);
+  
+  }
   
   res = list(tfriedman = tf, ptnemenyi = ptn)
   return (res);
