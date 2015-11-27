@@ -2,6 +2,7 @@
 #includes
 library(moments)
 library(nortest)
+library(ggplot2)
 
 #local
 source("rcode\\axlib.R")
@@ -17,10 +18,10 @@ print(names(DB)); #names colum
 print(head(DB));  #print 6 first row
 
 
-X = DB$PS;
+X = DB$P;
 
 #Analisis de normalidad
-source("rcode\\raw_scrip_analysis_norm.R");
+source("rcode\\raw_scrip_analysis_norm.R")
 
 
 

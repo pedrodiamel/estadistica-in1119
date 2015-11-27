@@ -31,6 +31,9 @@ par(mfcol = c(1,4)); # []1x4
 #h = hist(X, col="blue",breaks=10, main="Histograma");
 h = hist(X, col="blue", main="Histograma");
 
+
+
+
 #Density plots
 dens <- density(X);
 plot(dens,lwd=3,col="blue", main="Density");
@@ -72,7 +75,7 @@ cat("Anderson-Darling test:", "\n");
 cat("P-value:", adt$p.value, "\n");
 
 # Kormogorov Smirnov test
-kst = ks.test((X-mean(X))/sd(X), "pnorm", 0, 1);
+kst = ks.test(X, "pnorm", mean(X), sd(X));
 cat("Kormogorov Smirnov test:", "\n");
 cat("P-value:", kst$p.value, "\n");
 

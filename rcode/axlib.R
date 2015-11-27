@@ -1,6 +1,6 @@
 ## If you want to source() a bunch of files, something like
 ## the following may be useful:
-sourceDir <- function(path, trace = TRUE, ...) {
+sourcedir <- function(path, trace = TRUE, ...) {
     for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
        if(trace) cat(nm,":")
        source(file.path(path, nm), ...)
@@ -9,13 +9,22 @@ sourceDir <- function(path, trace = TRUE, ...) {
 }
 
 ##Loading data
-loadData <- function(path)
+loaddata.csv <- function( path )
 {
 	#Load data
 	con = file(path, "r");
 	DB <- read.csv(con, head=T, sep=";");
-	#DB <- read.table(con, sep=",");
 	close(con);	
 	return(DB);
+}
+
+##Loading data
+loaddata.table <- function( path )
+{
+  #Load data
+  con = file(path, "r");
+  DB <- read.table(con, sep=",");
+  close(con);	
+  return(DB);
 }
 
