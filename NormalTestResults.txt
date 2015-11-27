@@ -1,0 +1,169 @@
+SIGNIFICANCIA DE 5% , alfa = 0.05
+
+LILLIEFORS TEST
+
+Smartphone S3
+
+OnDemand: p-value = 0.21 NORMAL
+
+Performance: p-value = 0.000768 NAO NORMAL
+
+PowerSave: p-value = 0.6164 NORMAL
+
+PegasusQ: p-value = 0.0009465 NAO NORMAL
+
+700MHz: p-value = 0.195 NORMAL
+
+1100MHz: p-value = 0.2782 NORMAL
+
+1400MHz: p-value = 0.2689 NORMAL
+
+
+
+----------------------------------------------------
+
+Smartphone S4
+
+OnDemand: p-value = 0.08669 NORMAL
+
+Performance: p-value = 0.1139 NORMAL
+
+PowerSave: p-value = 0.3407 NORMAL
+
+Interactive: p-value = 0.5014 NORMAL
+
+702MHz: p-value = 0.9548 NORMAL
+
+1134MHz: p-value = 0.01896 NÃO NORMAL
+
+1890MHz: p-value = 0.652 NORMAL
+
+COMMANDS
+lillie.test(SF_S3$X700MHz)
+lillie.test(SF_S3$X1100MHz)
+lillie.test(SF_S3$X1400MHz)
+lillie.test(SG_S3$O)
+lillie.test(SG_S3$P)
+lillie.test(SG_S3$PQ)
+lillie.test(SG_S3$PS)
+lillie.test(SG_S4$PS)
+lillie.test(SG_S4$P)
+lillie.test(SG_S4$O)
+lillie.test(SG_S4$I)
+lillie.test(SF_S4$X702.MHz)
+lillie.test(SF_S4$X1134.MHz)
+lillie.test(SF_S4$X1890.MHz)
+
+====================================================================================
+
+SHAPIRO WILK TEST
+
+Smartphone S3
+
+OnDemand: p-value = 0.2109 NORMAL
+
+Performance: p-value = 0.0009073 NAO NORMAL
+
+PowerSave: p-value = 0.6321 NORMAL
+
+PegasusQ: p-value = 0.0008653 NAO NORMAL
+
+700MHz: p-value = 0.09014 NORMAL
+
+1100MHz: p-value = 0.1943 NORMAL
+
+1400MHz: p-value = 0.02742 NAO NORMAL
+
+
+
+----------------------------------------------------
+
+Smartphone S4
+
+OnDemand: p-value = 0.0426 NAO NORMAL
+
+Performance: p-value = 0.08294 NORMAL
+
+PowerSave: p-value = 0.4645 NORMAL
+
+Interactive: p-value = 0.01585 NAO NORMAL
+
+702MHz: p-value = 0.3691 NORMAL
+
+1134MHz: p-value = 0.003784 NAO NORMAL
+
+1890MHz: p-value = 0.1346 NORMAL
+
+COMMANDS
+shapiro.test(SF_S3$X700MHz)
+shapiro.test(SF_S3$X1100MHz)
+shapiro.test(SF_S3$X1400MHz)
+shapiro.test(SG_S3$O)
+shapiro.test(SG_S3$P)
+shapiro.test(SG_S3$PQ)
+shapiro.test(SG_S3$PS)
+shapiro.test(SG_S4$PS)
+shapiro.test(SG_S4$P)
+shapiro.test(SG_S4$O)
+shapiro.test(SG_S4$I)
+shapiro.test(SF_S4$X702.MHz)
+shapiro.test(SF_S4$X1134.MHz)
+shapiro.test(SF_S4$X1890.MHz)
+
+
+
+====================================================================================
+
+ANDERSON DARLING TEST
+
+Smartphone S3
+
+OnDemand: p-value = 0.19 NORMAL
+
+Performance:  p-value = 3.791e-05 NAO NORMAL
+
+PowerSave: p-value = 0.658 NORMAL
+
+PegasusQ:  p-value = 0.0002398 NAO NORMAL
+
+700MHz: p-value = 0.09208 NORMAL
+
+1100MHz:p-value = 0.1491 NORMAL
+
+1400MHz: p-value = 0.05013 NORMAL
+
+
+
+----------------------------------------------------
+
+Smartphone S4
+
+OnDemand: p-value = 0.04047 NAO NORMAL
+
+Performance: p-value = 0.05182 NORMAL
+
+PowerSave: p-value = 0.5096 NORMAL
+
+Interactive: p-value = 0.1072 NORMAL
+
+702MHz:  p-value = 0.6601 NORMAL
+
+1134MHz: p-value = 0.001845 NAO NORMAL
+
+1890MHz: p-value = 0.4493 NORMAL
+
+COMMANDS
+ad.test(SF_S3$X700MHz)
+ad.test(SF_S3$X1100MHz)
+ad.test(SF_S3$X1400MHz)
+ad.test(SG_S3$O)
+ad.test(SG_S3$P)
+ad.test(SG_S3$PQ)
+ad.test(SG_S3$PS)
+ad.test(SG_S4$PS)
+ad.test(SG_S4$P)
+ad.test(SG_S4$O)
+ad.test(SG_S4$I)
+ad.test(SF_S4$X702.MHz)
+ad.test(SF_S4$X1134.MHz)
+ad.test(SF_S4$X1890.MHz)
