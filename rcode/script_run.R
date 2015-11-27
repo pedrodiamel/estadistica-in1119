@@ -93,13 +93,18 @@ ggplot(NULL, aes(x=1, y=PS)) +
 test_adh = st.test.adherencia(PS)
 
 
-X = c(db[,1],db[,2],db[,3],db[,4]);
-dim(X) = c(30,4);
+
+
+# Analisis de as asmostras ------------------------------------------------
+
 
 #Test de Friedman con post test de nemenyi
+X = as.matrix(db);
 test_friedman = st.test.friedman(X,0.05)
 test_friedman$tfriedman
 test_friedman$ptnemenyi
+
+
 
 
 

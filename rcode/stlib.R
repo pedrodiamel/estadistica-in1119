@@ -103,10 +103,11 @@ st.test.adherencia <- function ( X ){
 st.test.friedman <- function(X, p){
   
   
+  #Test de friedman
+  tf = friedman.test(X); 
+  ptn = 0; 
   
-  tf = friedman.test(X); #Test de friedman
-   
-  
+  #Post test de nemenyi
   ptn = posthoc.friedman.nemenyi.test(X);
   
   
