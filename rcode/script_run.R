@@ -365,17 +365,46 @@ test_adh$anderson
 # X1400MHz ----------------------------------------------------------------
 
 
+name_alg = "X1400MHz"
+X1100MHz = db$X1400MHz
+
+#Histograma (500x400)
+ggplot(db, aes(x=X1400MHz)) +
+  geom_histogram(
+    aes(y=..density..),
+    binwidth = 1,
+    colour="black", 
+    fill="white" 
+  ) +
+  stat_function(fun=dnorm, 
+                args=list(mean=mean(db$X1400MHz), sd=sd(db$X1400MHz)), 
+                color ="red") +
+  xlab(name_alg)
+#geom_line(stat="density", adjust=.55)
+
+ggsave("graph/X1400MHzhistnorm.png", width=4, height=4, dpi=300)
 
 
 
+#Q-Q
+ggplot(db, aes(sample = db$X1400MHz)) + 
+  stat_qq() +
+  ylab(name_alg)
+
+ggsave("graph/X1400MHzqqnorm.png", width=4, height=4, dpi=300)
+
+#Box-plot
+ggplot(NULL, aes(x=1, y=X1400MHz)) + 
+  geom_boxplot(notch=TRUE) +
+  scale_x_continuous(breaks=NULL) +
+  theme(axis.title.x = element_blank())
 
 
-
-
-
-
-
-
+#Test Adherencia
+test_adh = st.test.adherencia(db$X1400MHz)
+test_adh$shapiro
+test_adh$lillie
+test_adh$anderson
 
 
 
