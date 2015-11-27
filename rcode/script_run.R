@@ -35,16 +35,25 @@ ms_fx7 = st.descrip_measure(db$X700MHz);
 ms_fx11 = st.descrip_measure(db$X1100MHz);
 ms_fx14 = st.descrip_measure(db$X1400MHz);
 
+#print
+st.descrip_measure.toSting(db$PS)
+st.descrip_measure.toSting(db$O)
+st.descrip_measure.toSting(db$P)
+st.descrip_measure.toSting(db$PQ)
+st.descrip_measure.toSting(db$X700MHz)
+st.descrip_measure.toSting(db$X1100MHz)
+st.descrip_measure.toSting(db$X1400MHz)
 
 
 d = dim(db);
 catg = rep(1,d[1]);
-tab1  = c(catg, catg*2,catg*3,catg*4)
-tab2  = c(db[,1],db[,2],db[,3],db[,4]) 
+tab1  = c(catg, catg*2,catg*3,catg*4,catg*5,catg*6,catg*7)
+tab2  = c(db[,1],db[,2],db[,3],db[,4],db[,5],db[,6],db[,7]) 
 tab = cbind(tab2,tab1);
 tab = as.data.frame(tab);
 names(tab) <- c("datos","categorias");
-tab$categorias <- factor(tab$categorias,levels=1:4,labels=c("PS","O","P","PQ")) 
+tab$categorias <- factor(tab$categorias,levels=1:7,
+        labels=c("PS","O","P","PQ","700MHz","1100MHz","1400MHz")) 
 
 
 # Kernel density plots
@@ -59,30 +68,48 @@ qplot(tab$datos, data=tab, geom="density", fill=categorias, alpha=I(.5),
 # observations (points) are overlayed and jittered , "jitter"
 qplot(categorias,tab$datos, data=tab, geom=c("boxplot"), 
       fill=categorias, main="Energy consumption",
-      xlab="", ylab="Consumption") +
+      xlab="", ylab="Consumption in Joules") +
       labs(fill="Algoritmos")
+
+#Box-plot
+consumo = tab$datos;
+p <- ggplot(tab, aes(categorias, consumo))
+p + geom_boxplot( aes(fill=categorias),notch = TRUE) +
+  coord_flip() +
+  labs(fill="Algoritmos")
+
 
 
 #Histogramas
 consumo = tab$datos;
 m = ggplot(tab, aes(x=consumo, y=..density.. , fill=categorias)) 
-m + geom_histogram(alpha=0.4, binwidth = 1) +
-  geom_line(stat="density", adjust=.55) +
+m + geom_histogram(alpha=0.8, binwidth = 1) +
+  geom_line(stat="density", adjust=.55, alpha=0.4) +
   expand_limits(y=0) +
   facet_grid(categorias ~ .) +
   labs(fill="Algoritmos")
 
 
+## Analisis individual
 
-## PowerSave
-PS = db$PS
-ms = st.descrip_measure(PS);
+X = db$PS # PowerSave
+name_alg = "PS"
 
-#Histograma
-ggplot(NULL, aes(x=PS)) +
-  geom_histogram(binwidth=1, fill="cornsilk", colour="grey60", size=.2) +
-  geom_line(stat="density", adjust=.25)
-  
+#Histograma (500x400)
+ggplot(db, aes(x=PS)) +
+  geom_histogram(
+    aes(y=..density..),
+    binwidth = 1,
+    colour="black", 
+    fill="white" 
+    ) +
+  stat_function(fun=dnorm, 
+    args=list(mean=mean(db$PS), sd=sd(db$PS)), 
+    color ="red") +
+    xlab(name_alg)
+  #geom_line(stat="density", adjust=.55)
+
+
 #Q-Q
 ggplot(db, aes(sample = db$PS)) + 
   stat_qq() +
@@ -97,6 +124,22 @@ ggplot(NULL, aes(x=1, y=PS)) +
 
 #Test Adherencia
 test_adh = st.test.adherencia(PS)
+test_adh$shapiro
+test_adh$lillie
+test_adh$anderson
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
