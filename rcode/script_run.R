@@ -53,31 +53,29 @@ tab = cbind(tab2,tab1);
 tab = as.data.frame(tab);
 names(tab) <- c("datos","categorias");
 tab$categorias <- factor(tab$categorias,levels=1:7,
-        labels=c("PS","O","P","PQ","700MHz","1100MHz","1400MHz")) 
+        labels=c("PS","OD","PE","PQ","700MHz","1100MHz","1400MHz")) 
 
 
 # Kernel density plots
 # grouped by number of categorias (indicated by color)
 qplot(tab$datos, data=tab, geom="density", fill=categorias, alpha=I(.5), 
-      main="Energy consumption", xlab="Consumption", 
+      main="", xlab="Energy Consumption (Joules)", 
       ylab="Density") + 
-      labs(fill="Algoritmos")
+      labs(fill="Algorithms")
 
 
 # Boxplots by number of categoria 
 # observations (points) are overlayed and jittered , "jitter"
 qplot(categorias,tab$datos, data=tab, geom=c("boxplot"), 
-      fill=categorias, main="Energy consumption",
-      xlab="", ylab="Consumption in Joules") +
-      labs(fill="Algoritmos")
+      fill=categorias, main="",
+      xlab="", ylab="Energy Consumption (Joules)") +
+      labs(fill="Algorithms")
 
 #Box-plot
 consumo = tab$datos;
 p <- ggplot(tab, aes(categorias, consumo))
 p + geom_boxplot( aes(fill=categorias),notch = TRUE) +
-  coord_flip() +
-  labs(fill="Algoritmos")
-
+  coord_flip() + labs(fill="Algorithms", x = "", y = "Energy Consumption (Joules)")
 
 
 #Histogramas
@@ -87,7 +85,7 @@ m + geom_histogram(alpha=0.8, binwidth = 1) +
   geom_line(stat="density", adjust=.55, alpha=0.4) +
   expand_limits(y=0) +
   facet_grid(categorias ~ .) +
-  labs(fill="Algoritmos")
+  labs(fill="Algorithms", x = "Energy Consumption (Joules)", y = "Density")
 
 
 ## Analisis individual
