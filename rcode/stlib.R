@@ -62,9 +62,11 @@ st.descrip_measure.toSting <- function(X){
 
 
 
-#' Analisis 
+#' Analisis: Histograma 
 #'
-#' @param Analisis Garfico
+#' @param Tab tabla
+#' @param X campo
+#' @param xlab, ylab
 #'
 #' @return
 #' @export
@@ -72,11 +74,62 @@ st.descrip_measure.toSting <- function(X){
 #' @examples
 #' 
 #' 
-st.graph.hist <- function(X){
+st.graph.hist <- function(Tab, X, xlab, ylab){
 
+  #Histograma
+  ggplot(Tab, aes(x=X)) +
+    geom_histogram(
+      aes(y=..density..),
+      binwidth = 1,
+      colour="black", 
+      fill="white" 
+    ) +
+    stat_function(fun=dnorm, 
+                  args=list(mean=mean(X), sd=sd(X)), 
+                  color ="red") +
+    xlab(xlab) + 
+    ylab(ylab)
+   
+  
+}
+
+
+#' Analisis: QQnorm 
+#'
+#' @param Tab 
+#' @param X 
+#' @param xlab 
+#' @param ylab 
+#'
+#' @return
+#' @export
+#'
+#' @examples
+st.graph.qqnorm <- function(Tab, X, xlab="X", ylab="Y"){
+  
+  
+  
+  y <- quantile(X, c(0.25, 0.75))
+  x <- qnorm(c(0.25, 0.75))
+  slope <- diff(y)/diff(x)
+  int <- y[1L] - slope * x[1L]
+  
+  
+  #Q-Q
+  ggplot(Tab, aes(sample = X)) + 
+    stat_qq(alpha = 0.5) +
+    geom_abline(slope = slope, intercept = int, color="red") +
+    ylab(ylab) + 
+    xlab(xlab)
+  
+  
   
   
 }
+
+
+
+
 
 
 #' Title
