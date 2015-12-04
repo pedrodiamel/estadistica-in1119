@@ -33,27 +33,30 @@ st.descrip_measure <- function( X ){
 
 st.descrip_measure.toSting <- function(X){
   
+  minimo = min(X); 
+  quartiles = quantile(X); 
+  mediana = median(X);
   media = mean(X);  
   desviacion = sd(X);  
   varianza = var(X); 
-  minimo = min(X);  
   maximo = max(X); 
-  mediana = median(X); 
-  rango = range(X); 
-  quartiles = quantile(X); 
   n = length(X);
+  
+  rango = range(X); 
   kt = kurtosis(X);
   skw = skewness(X);
   
+  cat("minimo:", minimo,"\n")
+  cat("quartiles:", quartiles[1], quartiles[2], quartiles[3], quartiles[4], quartiles[5],"\n")
+  cat("mediana:", mediana,"\n")
   cat("media:", media ,"\n")
   cat("desviacion:", desviacion,"\n")
   cat("varianza:", varianza,"\n")
-  cat("minimo:", minimo,"\n")
   cat("maximo:", maximo,"\n")
-  cat("mediana:", mediana,"\n")
-  cat("rango:", rango[1],rango[2],"\n")
-  cat("quartiles:", quartiles[1], quartiles[2], quartiles[3], quartiles[4], quartiles[5],"\n")
   cat("cout:", n,"\n")
+  cat("rango:", rango[1],rango[2],"\n")
+ 
+  
   cat("kurtosis:", kt,"\n")
   cat("skewness:", skw,"\n")
   
