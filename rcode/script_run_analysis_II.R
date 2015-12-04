@@ -32,7 +32,7 @@ summary(db) #sumario
 st.descrip_measure.toSting(db$PS)
 st.descrip_measure.toSting(db$O)
 st.descrip_measure.toSting(db$P)
-st.descrip_measure.toSting(db$PQ)
+st.descrip_measure.toSting(db$I)
 st.descrip_measure.toSting(db$X702MHz)
 st.descrip_measure.toSting(db$X1134MHz)
 st.descrip_measure.toSting(db$X1890MHz)
