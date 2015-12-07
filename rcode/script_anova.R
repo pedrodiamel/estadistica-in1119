@@ -34,5 +34,10 @@ tab = stack(tab);
 
 anova(lm(values~ind, data=tab ))
 
+#Pós teste anova
+pairwise.t.test(tab$values, tab$ind, p.adjust="bonferroni")
 
+#Turkey Teste
+resultsT = aov(values~ind, data=tab)
+TukeyHSD(resultsT, conf.level = 0.95)
 

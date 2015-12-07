@@ -1,0 +1,82 @@
+S3
+
+Analysis of Variance Table
+
+Response: values
+           Df Sum Sq Mean Sq F value    Pr(>F)    
+ind         3  92937 30978.9    1891 < 2.2e-16 ***
+Residuals 116   1900    16.4                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+-----------------------------------A
+
+Pairwise comparisons using t tests with pooled SD 
+
+data:  tab$values and tab$ind 
+
+         O      PS     X1100MHz
+PS       0.0028 -      -       
+X1100MHz <2e-16 <2e-16 -       
+X700MHz  <2e-16 <2e-16 <2e-16  
+
+P value adjustment method: bonferroni 
+
+---------------------------------
+
+Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = values ~ ind, data = tab)
+
+$ind
+                       diff        lwr       upr     p adj
+PS-O               3.761267   1.037123   6.48541 0.0026215
+X1100MHz-O       -45.115067 -47.839210 -42.39092 0.0000000
+X700MHz-O        -60.237733 -62.961877 -57.51359 0.0000000
+X1100MHz-PS      -48.876333 -51.600477 -46.15219 0.0000000
+X700MHz-PS       -63.999000 -66.723143 -61.27486 0.0000000
+X700MHz-X1100MHz -15.122667 -17.846810 -12.39852 0.0000000
+
+
+-------------------------------------------------------------
+
+s4
+
+Analysis of Variance Table
+
+Response: values
+           Df Sum Sq Mean Sq F value    Pr(>F)    
+ind         3 292994   97665  2376.5 < 2.2e-16 ***
+Residuals 116   4767      41                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+-------------------------------------------------
+
+	Pairwise comparisons using t tests with pooled SD 
+
+data:  tabs4$values and tabs4$ind 
+
+         P       PS      X1890MHz
+PS       1.5e-08 -       -       
+X1890MHz < 2e-16 < 2e-16 -       
+X702MHz  < 2e-16 < 2e-16 < 2e-16 
+
+P value adjustment method: bonferroni 
+
+--------------------------------------
+
+ Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = values ~ ind, data = tabs4)
+
+$ind
+                       diff         lwr        upr p adj
+PS-P               10.68933    6.374778   15.00389     0
+X1890MHz-P         92.22600   87.911444   96.54056     0
+X702MHz-P         -44.66400  -48.978556  -40.34944     0
+X1890MHz-PS        81.53667   77.222111   85.85122     0
+X702MHz-PS        -55.35333  -59.667889  -51.03878     0
+X702MHz-X1890MHz -136.89000 -141.204556 -132.57544     0
