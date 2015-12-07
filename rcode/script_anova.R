@@ -29,7 +29,7 @@ head(db)
 
 
 tab = db;
-tab = tab[,c(1,2,5,6)];
+tab = tab[,c(1,2,5,6)]; #O,PS,700, 1100
 tab = stack(tab);
 
 anova(lm(values~ind, data=tab ))
