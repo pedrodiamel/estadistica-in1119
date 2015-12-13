@@ -108,7 +108,7 @@ test_adh$anderson
 # ANALISIS DE OnDemand ----------------------------------------------------
 
 X = db$O
-xlab = "O"; ylab = "Y";
+xlab = "OnDemand"; ylab = "Density";
 st.graph.hist(db, X,xlab,ylab)
 # ggsave("graph/histnorm.png", width=4, height=4, dpi=300)
 
