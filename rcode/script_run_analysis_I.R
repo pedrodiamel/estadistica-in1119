@@ -217,7 +217,7 @@ test_adh$anderson
 
 
 #Test de Friedman con post test de nemenyi
-X = as.matrix(db);
+X = as.matrix(db[,3:6]);
 test_friedman = st.test.friedman(X, 0.05)
 test_friedman$tfriedman
 test_friedman$ptnemenyi

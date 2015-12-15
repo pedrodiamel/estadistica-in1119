@@ -28,6 +28,12 @@ head(db)
 # struct data -------------------------------------------------------------
 
 
+cor(dbs4);
+pairs(db);
+
+
+# Anova analyce -----------------------------------------------------------
+
 
 tab = db;
 tab = tab[,c(1,2,5,6)]; #O,PS,700, 1100
@@ -46,6 +52,9 @@ pairwise.t.test(tab$values, tab$ind, p.adjust="bonferroni")
 #Turkey Teste S3
 resultsT = aov(values~ind, data=tab)
 TukeyHSD(resultsT, conf.level = 0.95)
+
+
+
 
 #----------------------------------------------------
 

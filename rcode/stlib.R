@@ -1,5 +1,5 @@
 
-#' Estadística descriptiva
+#' Estadastica descriptiva
 #'
 #' @param X dados de la tabla
 #'
@@ -83,7 +83,7 @@ st.graph.hist <- function(Tab, X, xlab, ylab){
   ggplot(Tab, aes(x=X)) +
     geom_histogram(
       aes(y=..density..),
-      binwidth = 1,
+      binwidth = 0.8,
       colour="black", 
       fill="white" 
     ) +
