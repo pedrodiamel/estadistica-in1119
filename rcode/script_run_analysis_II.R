@@ -46,7 +46,7 @@ tab = cbind(tab2,tab1);
 tab = as.data.frame(tab);
 names(tab) <- c("datos","categorias");
 tab$categorias <- factor(tab$categorias,levels=1:7,
-        labels=c("PS","OD","PE","PQ","702MHz","1134MHz","1890MHz")) 
+        labels=c("PS","OD","PE","I","702MHz","1134MHz","1890MHz")) 
 
 
 
@@ -108,7 +108,7 @@ test_adh$anderson
 # ANALISIS DE OnDemand ----------------------------------------------------
 
 X = db$O
-xlab = "O"; ylab = "Y";
+xlab = "OnDemand"; ylab = "Density";
 st.graph.hist(db, X,xlab,ylab)
 # ggsave("graph/histnorm.png", width=4, height=4, dpi=300)
 

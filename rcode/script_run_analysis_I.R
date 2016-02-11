@@ -198,7 +198,7 @@ test_adh$anderson
 
 
 X = db$X1400MHz
-xlab = "1400MHz"; ylab = "Y";
+xlab = "1400MHz"; ylab = "Density";
 st.graph.hist(db, X,xlab,ylab)
 # ggsave("graph/histnorm.png", width=4, height=4, dpi=300)
 
